@@ -1,32 +1,16 @@
-import { create } from 'zustand'
-import { View, Text, Button } from 'react-native'
 import React from 'react'
+import { View, Text, Button } from 'react-native'
+import useStoreApp from "../store"
 
-
-interface IBasic {
-    bears: number;
-    increasePopulation: (by: number) => void
-    decresasePopulation: (by: number) => void
-    removeAllBears: () => void;
-}
-
-
-
-const useStore = create((set) => ({
-    bears: 0,
-    increasePopulation: () => set((state: IBasic) => ({ bears: state.bears + 1 })),
-    decresasePopulation: () => set((state: IBasic) => ({ bears: state.bears < 1 ? 0 : state.bears - 1 })),
-    removeAllBears: () => set({ bears: 0 }),
-}))
 
 function BearCounter() {
-    const bears = useStore((state: any) => state.bears)
+    const bears = useStoreApp((state: any) => state.bears)
     return <Text>{bears} around here.. 22.</Text>
 }
 
 function Controls() {
-    const increasePopulation = useStore((state: any) => state.increasePopulation)
-    const decreasePopulation = useStore((state: any) => state.decresasePopulation)
+    const increasePopulation = useStoreApp((state: any) => state.increasePopulation)
+    const decreasePopulation = useStoreApp((state: any) => state.decresasePopulation)
 
     return (
         <View>
