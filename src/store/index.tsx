@@ -1,6 +1,8 @@
 import { create } from "zustand"
 import { IBasic, StateFlat } from "./index.interface"
 import axios from "axios";
+import { persist } from "zustand/middleware";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 // import { mountStoreDevtool } from 'simple-zustand-devtools';
 
 
@@ -29,6 +31,22 @@ const useStoreApp = create((set) => ({
     },
 }))
 
+
+export const useStorePersist = create(
+    persist(
+        (set: any) => ({
+            // Define your store state and actions
+            counter: 0,
+            increment: () => set((state: any) => ({ counter: state.counter + 1 })),
+            decrement: () => set((state: any) => ({ counter: state.counter - 1 })),
+        }),
+        {
+            // Configure Zustand-persist options
+            name: 'my-app-store', // Name of the persisted store
+            getStorage: () => AsyncStorage, // AsyncStorage for React Native
+        }
+    )
+);
 
 
 // if (process.env.NODE_ENV === 'development') {
