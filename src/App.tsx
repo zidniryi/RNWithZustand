@@ -2,6 +2,7 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import Basic from "./components/Basic"
 import RequestApp from "./components/Request"
+import FlatUpdate from "./components/FlatUpdate"
 
 export default function App() {
   return (
@@ -10,6 +11,7 @@ export default function App() {
       <Basic />
       <RequestApp />
       <Text>Hello</Text>
+      <FlatUpdate />
     </View>
   )
 }

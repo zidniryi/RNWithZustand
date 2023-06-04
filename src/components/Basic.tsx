@@ -2,10 +2,9 @@ import React from 'react'
 import { View, Text, Button } from 'react-native'
 import useStoreApp from "../store"
 
-
 function BearCounter() {
     const bears = useStoreApp((state: any) => state.bears)
-    return <Text>{bears} around here.. 22.</Text>
+    return <Text style={{ color: 'black' }}>{bears} around here.. 22.</Text>
 }
 
 function Controls() {
@@ -16,12 +15,9 @@ function Controls() {
         <View>
             <Button onPress={increasePopulation} title="One Up" />
             <Button onPress={decreasePopulation} title="One Down" color={"red"} />
-
         </View>
     )
 }
-
-
 
 export default function Basic() {
     return (
